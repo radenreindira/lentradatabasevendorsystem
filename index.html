@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Database Vendor - CV LENTRA MICE</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,.08);
+      --panel-strong: rgba(255,255,255,.13);
+      --text: #eef3ff;
+      --muted: #9aa8c7;
+      --line: rgba(255,255,255,.12);
+      --brand: #7c3aed;
+      --brand-2: #06b6d4;
+      --brand-3: #f59e0b;
+      --ok: #22c55e;
+      --danger: #ef4444;
+      --warn: #f59e0b;
+      --card: #11182d;
+      --input: #0f172a;
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:
+      radial-gradient(circle at top left, rgba(124,58,237,.28), transparent 32rem),
+      radial-gradient(circle at top right, rgba(6,182,212,.22), transparent 30rem),
+      linear-gradient(145deg, #07101f 0%, #0b1020 55%, #0f1024 100%);
+      color: var(--text); min-height:100%; }
+    body.light {
+      --bg:#f4f7fb; --panel:rgba(255,255,255,.82); --panel-strong:#fff; --text:#10203f; --muted:#5d6880; --line:#dce3ef; --card:#ffffff; --input:#ffffff; --shadow: 0 18px 50px rgba(12,32,70,.13);
+      background: radial-gradient(circle at top left, rgba(124,58,237,.10), transparent 32rem), radial-gradient(circle at top right, rgba(6,182,212,.12), transparent 30rem), #f4f7fb;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    .hidden { display:none !important; }
+    .login-wrap { min-height:100vh; display:grid; place-items:center; padding:28px; }
+    .login-card { width:min(960px, 100%); display:grid; grid-template-columns: 1.1fr .9fr; overflow:hidden; border:1px solid var(--line); border-radius:32px; background:linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.04)); box-shadow:var(--shadow); backdrop-filter: blur(16px); }
+    .login-hero { padding:44px; position:relative; overflow:hidden; min-height:520px; display:flex; flex-direction:column; justify-content:space-between; }
+    .login-hero:before { content:""; position:absolute; inset:-35% -20% auto auto; width:440px; height:440px; border-radius:50%; background:linear-gradient(135deg, var(--brand), var(--brand-2)); filter: blur(8px); opacity:.25; }
+    .brand-row { display:flex; align-items:center; gap:14px; position:relative; z-index:1; }
+    .logo { width:56px; height:56px; border-radius:18px; display:grid; place-items:center; background:linear-gradient(135deg, #7c3aed, #06b6d4); color:white; font-weight:900; letter-spacing:-.06em; box-shadow:0 12px 30px rgba(6,182,212,.25); }
+    .brand-title { font-size:20px; font-weight:800; line-height:1.1; }
+    .brand-sub { color:var(--muted); font-size:13px; margin-top:3px; }
+    .hero-copy { position:relative; z-index:1; max-width:560px; }
+    .hero-copy h1 { font-size:48px; line-height:1.02; letter-spacing:-.06em; margin:0 0 18px; }
+    .hero-copy p { color:var(--muted); font-size:16px; line-height:1.7; margin:0; }
+    .hero-stats { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; position:relative; z-index:1; }
+    .hero-stat { padding:16px; border-radius:18px; border:1px solid var(--line); background:rgba(255,255,255,.07); }
+    .hero-stat b { display:block; font-size:24px; }
+    .hero-stat span { color:var(--muted); font-size:12px; }
+    .login-form { padding:44px; background:rgba(0,0,0,.14); display:flex; flex-direction:column; justify-content:center; }
+    body.light .login-form { background:rgba(255,255,255,.55); }
+    .login-form h2 { margin:0 0 8px; font-size:26px; letter-spacing:-.03em; }
+    .login-form p { margin:0 0 24px; color:var(--muted); line-height:1.6; }
+    .field { display:flex; flex-direction:column; gap:8px; margin-bottom:14px; }
+    .field label { color:var(--muted); font-size:13px; font-weight:700; }
+    .input, .select, textarea { width:100%; border:1px solid var(--line); border-radius:16px; padding:13px 14px; background:var(--input); color:var(--text); outline:none; transition:.18s; }
+    textarea { min-height:90px; resize:vertical; }
+    .input:focus, .select:focus, textarea:focus { border-color:rgba(6,182,212,.75); box-shadow:0 0 0 4px rgba(6,182,212,.12); }
+    .btn { border:none; border-radius:16px; padding:12px 15px; color:white; background:linear-gradient(135deg, var(--brand), var(--brand-2)); font-weight:800; cursor:pointer; box-shadow:0 12px 28px rgba(6,182,212,.15); display:inline-flex; align-items:center; justify-content:center; gap:9px; transition:.18s; }
+    .btn:hover { transform:translateY(-1px); filter:saturate(1.15); }
+    .btn.secondary { background:var(--panel-strong); color:var(--text); border:1px solid var(--line); box-shadow:none; }
+    .btn.danger { background:linear-gradient(135deg,#ef4444,#f97316); }
+    .btn.success { background:linear-gradient(135deg,#16a34a,#22c55e); }
+    .btn.small { padding:8px 10px; border-radius:12px; font-size:12px; }
+    .btn.ghost { background:transparent; color:var(--text); border:1px solid var(--line); box-shadow:none; }
+    .error { min-height:20px; color:#fecaca; font-size:13px; margin-top:10px; }
+    .shell { display:grid; grid-template-columns:280px 1fr; min-height:100vh; }
+    .sidebar { position:sticky; top:0; height:100vh; padding:22px 18px; border-right:1px solid var(--line); background:rgba(4,9,22,.55); backdrop-filter: blur(14px); overflow:auto; }
+    body.light .sidebar { background:rgba(255,255,255,.70); }
+    .side-brand { display:flex; gap:12px; align-items:center; padding:10px 8px 20px; }
+    .nav-title { color:var(--muted); font-size:12px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; margin:16px 10px 8px; }
+    .nav-btn { width:100%; text-align:left; padding:12px 13px; border-radius:15px; border:1px solid transparent; background:transparent; color:var(--muted); display:flex; justify-content:space-between; gap:10px; cursor:pointer; }
+    .nav-btn:hover, .nav-btn.active { color:var(--text); background:var(--panel); border-color:var(--line); }
+    .nav-btn small { color:var(--muted); font-weight:800; }
+    .main { padding:24px; overflow:hidden; }
+    .topbar { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:22px; }
+    .topbar h1 { margin:0; font-size:30px; letter-spacing:-.04em; }
+    .topbar p { margin:5px 0 0; color:var(--muted); }
+    .top-actions { display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+    .cards { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px; margin-bottom:16px; }
+    .card { border:1px solid var(--line); background:var(--panel); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); backdrop-filter: blur(12px); }
+    .card .label { color:var(--muted); font-size:13px; font-weight:800; }
+    .card .value { font-size:32px; font-weight:900; letter-spacing:-.05em; margin-top:6px; }
+    .card .mini { color:var(--muted); font-size:12px; margin-top:6px; }
+    .toolbar { display:grid; grid-template-columns:1.4fr .8fr .8fr auto; gap:10px; margin:16px 0; }
+    .panel { border:1px solid var(--line); background:var(--panel); border-radius:var(--radius); box-shadow:var(--shadow); backdrop-filter: blur(12px); overflow:hidden; }
+    .panel-head { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:16px 18px; border-bottom:1px solid var(--line); }
+    .panel-title { font-weight:900; letter-spacing:-.02em; }
+    .table-wrap { overflow:auto; max-height:calc(100vh - 360px); }
+    table { width:100%; border-collapse:separate; border-spacing:0; min-width:1180px; }
+    th, td { padding:13px 14px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; }
+    th { position:sticky; top:0; z-index:2; background:#10182c; color:#c9d6f5; font-size:12px; text-transform:uppercase; letter-spacing:.08em; cursor:pointer; user-select:none; }
+    body.light th { background:#f8fbff; color:#596679; }
+    td { color:var(--text); font-size:13px; line-height:1.45; }
+    tr:hover td { background:rgba(255,255,255,.04); }
+    body.light tr:hover td { background:#f7faff; }
+    .name-cell { min-width:230px; }
+    .name-cell b { display:block; font-size:14px; margin-bottom:5px; }
+    .id-chip { color:var(--muted); font-size:11px; font-weight:800; }
+    .chip { display:inline-flex; align-items:center; gap:6px; padding:6px 9px; border-radius:999px; background:rgba(6,182,212,.12); color:#a5f3fc; border:1px solid rgba(6,182,212,.25); font-size:12px; font-weight:800; }
+    body.light .chip { color:#075985; background:#e0f7ff; }
+    .muted { color:var(--muted); }
+    .nowrap { white-space:nowrap; }
+    .contact-link { display:inline-flex; margin:2px 0; color:#a5f3fc; }
+    body.light .contact-link { color:#0369a1; }
+    .empty { padding:40px; text-align:center; color:var(--muted); }
+    .modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,.58); display:none; align-items:center; justify-content:center; z-index:20; padding:20px; }
+    .modal-backdrop.show { display:flex; }
+    .modal { width:min(850px, 100%); max-height:92vh; overflow:auto; border:1px solid var(--line); background:#0f172a; border-radius:24px; box-shadow:var(--shadow); }
+    body.light .modal { background:#fff; }
+    .modal-head { padding:18px 20px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; gap:10px; align-items:center; }
+    .modal-head h3 { margin:0; font-size:20px; }
+    .modal-body { padding:20px; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .form-grid .full { grid-column:1 / -1; }
+    .modal-actions { display:flex; justify-content:flex-end; gap:10px; padding:18px 20px; border-top:1px solid var(--line); }
+    .detail-grid { display:grid; grid-template-columns:170px 1fr; gap:10px 14px; }
+    .detail-grid b { color:var(--muted); }
+    .footer-note { color:var(--muted); font-size:12px; margin-top:12px; line-height:1.5; }
+    .toast { position:fixed; right:20px; bottom:20px; background:#0f172a; color:white; border:1px solid var(--line); border-radius:16px; padding:13px 16px; box-shadow:var(--shadow); z-index:99; opacity:0; transform:translateY(10px); pointer-events:none; transition:.2s; }
+    .toast.show { opacity:1; transform:translateY(0); }
+    @media (max-width: 1050px) {
+      .login-card { grid-template-columns:1fr; }
+      .login-hero { min-height:auto; gap:34px; }
+      .shell { grid-template-columns:1fr; }
+      .sidebar { position:relative; height:auto; }
+      .cards { grid-template-columns:repeat(2,1fr); }
+      .toolbar { grid-template-columns:1fr 1fr; }
+      .topbar { align-items:flex-start; flex-direction:column; }
+      .top-actions { justify-content:flex-start; }
+      .table-wrap { max-height:none; }
+    }
+    @media (max-width: 650px) {
+      .login-hero, .login-form { padding:28px; }
+      .hero-copy h1 { font-size:36px; }
+      .hero-stats { grid-template-columns:1fr; }
+      .cards { grid-template-columns:1fr; }
+      .toolbar, .form-grid { grid-template-columns:1fr; }
+      .detail-grid { grid-template-columns:1fr; }
+      .main { padding:16px; }
+    }
+    @media print {
+      body { background:white; color:#111; }
+      .sidebar, .top-actions, .toolbar, .panel-head .btn, .action-col, .toast { display:none !important; }
+      .shell { display:block; }
+      .main { padding:0; }
+      .cards { display:none; }
+      .panel { box-shadow:none; border:none; }
+      .table-wrap { max-height:none; overflow:visible; }
+      table { min-width:0; }
+      th { position:static; background:#eee; color:#111; }
+      td, th { color:#111; font-size:11px; }
+    }
+  </style>
+</head>
+<body>
+  <section id="login" class="login-wrap">
+    <div class="login-card">
+      <div class="login-hero">
+        <div class="brand-row">
+          <div class="logo">LM</div>
+          <div>
+            <div class="brand-title">CV LENTRA MICE</div>
+            <div class="brand-sub">Vendor Database Management System</div>
+          </div>
+        </div>
+        <div class="hero-copy">
+          <h1>Database vendor event yang rapi, cepat, dan siap dipakai.</h1>
+        </div>
+        <div class="hero-stats" id="loginStats"></div>
+      </div>
+      <form class="login-form" id="loginForm">
+        <h2>Masuk ke sistem</h2>
+        <p>Gunakan sandi akses internal untuk membuka database vendor.</p>
+        <div class="field">
+          <label for="password">Sandi</label>
+          <input class="input" id="password" type="password" autocomplete="current-password" placeholder="Masukkan sandi" />
+        </div>
+        <button class="btn" type="submit">Buka Database</button>
+        <div class="error" id="loginError"></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="app" class="shell hidden">
+    <aside class="sidebar">
+      <div class="side-brand">
+        <div class="logo">LM</div>
+        <div>
+          <div class="brand-title">LENTRA MICE</div>
+          <div class="brand-sub">Vendor Database</div>
+        </div>
+      </div>
+      <div class="nav-title">Kategori</div>
+      <div id="categoryNav"></div>
+      <div class="nav-title">Aksi Sistem</div>
+      <button class="nav-btn" id="btnTheme"><span>Mode terang/gelap</span><small>◐</small></button>
+      <button class="nav-btn" id="btnPassword"><span>Ganti sandi</span><small>🔐</small></button>
+      <button class="nav-btn" id="btnReset"><span>Reset database awal</span><small>↺</small></button>
+      <button class="nav-btn" id="btnLogout"><span>Keluar</span><small>⇥</small></button>
+      <div class="footer-note">Data tersimpan di browser melalui localStorage. Ekspor CSV disarankan sebagai backup berkala.</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1>Database Vendor</h1>
+          <p id="subtitle">Kelola vendor event dengan pencarian dan filter cepat.</p>
+        </div>
+        <div class="top-actions">
+          <button class="btn secondary" id="btnExport">Ekspor CSV</button>
+          <button class="btn secondary" id="btnPrint">Print</button>
+          <button class="btn" id="btnAdd">+ Tambah Vendor</button>
+        </div>
+      </header>
+
+      <section class="cards" id="cards"></section>
+
+      <section class="toolbar">
+        <input class="input" id="searchInput" placeholder="Cari nama, lokasi, kontak, rate, catatan..." />
+        <select class="select" id="categoryFilter"></select>
+        <select class="select" id="locationFilter"></select>
+        <button class="btn secondary" id="btnClear">Bersihkan</button>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title" id="tableTitle">Semua vendor</div>
+            <div class="muted" id="tableCount">0 data</div>
+          </div>
+          <button class="btn small secondary" id="btnCompact">Tampilan ringkas</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th data-sort="nama">Vendor</th>
+                <th data-sort="kategori">Kategori</th>
+                <th data-sort="jenis">Jenis / Spesialisasi</th>
+                <th data-sort="lokasi">Lokasi</th>
+                <th>Kontak</th>
+                <th>Email</th>
+                <th>Kapasitas</th>
+                <th>Rate / Estimasi</th>
+                <th>Catatan</th>
+                <th class="action-col">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+          <div class="empty hidden" id="emptyState">Data tidak ditemukan. Ubah kata kunci atau filter.</div>
+        </div>
+      </section>
+    </main>
+  </section>
+
+  <div class="modal-backdrop" id="vendorModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="vendorModalTitle">Tambah Vendor</h3>
+        <button class="btn small ghost" data-close="vendorModal">Tutup</button>
+      </div>
+      <form id="vendorForm">
+        <div class="modal-body">
+          <input type="hidden" id="vendorId" />
+          <div class="form-grid">
+            <div class="field"><label>Nama Vendor/Venue</label><input class="input" id="fNama" required /></div>
+            <div class="field"><label>Kategori</label><input class="input" id="fKategori" list="kategoriList" required /></div>
+            <div class="field"><label>Jenis / Spesialisasi</label><input class="input" id="fJenis" /></div>
+            <div class="field"><label>Lokasi</label><input class="input" id="fLokasi" /></div>
+            <div class="field"><label>Kontak</label><input class="input" id="fKontak" /></div>
+            <div class="field"><label>Email</label><input class="input" id="fEmail" type="email" /></div>
+            <div class="field full"><label>Kapasitas</label><textarea id="fKapasitas"></textarea></div>
+            <div class="field full"><label>Rate / Estimasi</label><textarea id="fRate"></textarea></div>
+            <div class="field full"><label>Catatan / Remarks</label><textarea id="fCatatan"></textarea></div>
+          </div>
+          <datalist id="kategoriList"></datalist>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn secondary" data-close="vendorModal">Batal</button>
+          <button type="submit" class="btn success">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="detailModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="detailTitle">Detail Vendor</h3>
+        <button class="btn small ghost" data-close="detailModal">Tutup</button>
+      </div>
+      <div class="modal-body">
+        <div class="detail-grid" id="detailGrid"></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn secondary" data-close="detailModal">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="passwordModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Ganti Sandi</h3>
+        <button class="btn small ghost" data-close="passwordModal">Tutup</button>
+      </div>
+      <form id="passwordForm">
+        <div class="modal-body">
+          <div class="field"><label>Sandi lama</label><input class="input" id="oldPass" type="password" required /></div>
+          <div class="field"><label>Sandi baru</label><input class="input" id="newPass" type="password" minlength="6" required /></div>
+          <div class="field"><label>Ulangi sandi baru</label><input class="input" id="newPass2" type="password" minlength="6" required /></div>
+          <div class="footer-note">Perubahan sandi tersimpan di browser ini. Bila file dibuka di perangkat lain, sandi bawaan tetap berlaku sampai diganti pada perangkat tersebut.</div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn secondary" data-close="passwordModal">Batal</button>
+          <button type="submit" class="btn success">Simpan Sandi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<script src="function.js"></script>
+</body>
+</html>
